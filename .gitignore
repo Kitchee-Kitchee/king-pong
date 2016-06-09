@@ -1,0 +1,6 @@
+.idea
+.ruby-version
+db/*.sqlite3
+tmp
+log
+config/database.yml
