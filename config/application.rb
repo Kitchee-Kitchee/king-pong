@@ -1,10 +1,12 @@
-require 'sinatra/base'
-require 'sinatra/activerecord'
-require 'sinatra/reloader'
-require 'will_paginate'
-require 'will_paginate/active_record'
+require 'bundler'
+Bundler.require
 
-Dir.glob('./app/{models,controllers}/*.rb').each { |file| require file }
+path = File.expand_path('../../app/{controllers,models}', __FILE__)
+dirs = Dir.glob(path)
+$LOAD_PATH.concat(dirs)
+
+Dir.glob('./lib/**/*.rb').each { |file|  require file }
+Dir.glob(path + '/**/*.rb').each { |file| require file }
 
 module KingPong
   Application = Rack::Builder.new do
@@ -13,8 +15,13 @@ module KingPong
 
     ActiveRecord::Base.establish_connection(db_options)
 
+    use Rack::Parser, parsers: {
+      %r{json} => OjEncoder.new
+    }
+
     map('/users'){ run UsersController }
     map('/games'){ run GamesController }
     map('/rankings'){ run RankingsController }
+
   end
 end
