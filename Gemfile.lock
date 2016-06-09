@@ -65,6 +65,7 @@ GEM
     tilt (2.0.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    will_paginate (3.1.0)
 
 PLATFORMS
   ruby
@@ -78,6 +79,7 @@ DEPENDENCIES
   sinatra-activerecord!
   sinatra-reloader
   sqlite3
+  will_paginate
 
 RUBY VERSION
    ruby 2.3.1p112

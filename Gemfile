@@ -12,6 +12,10 @@ gem 'activerecord', '~> 4.2'
 
 gem 'oj', '~> 2.15.1'
 
+# sinatra-reloader should only be required in development or test ... must be fixed
+gem 'sinatra-reloader'
+gem 'will_paginate'
+
 group :development do
   gem 'sinatra-reloader'
 end

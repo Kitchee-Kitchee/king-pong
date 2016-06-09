@@ -1,5 +1,8 @@
 require 'sinatra/base'
-require "sinatra/activerecord"
+require 'sinatra/activerecord'
+require 'sinatra/reloader'
+require 'will_paginate'
+require 'will_paginate/active_record'
 
 Dir.glob('./app/{models,controllers}/*.rb').each { |file| require file }
 
