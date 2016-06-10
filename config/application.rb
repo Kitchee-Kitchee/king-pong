@@ -1,8 +1,13 @@
-require 'bundler'
-Bundler.require
+require 'rubygems'
+require 'bundler/setup'
+require 'sinatra'
 
-path = File.expand_path('../../app/{controllers,models}', __FILE__)
+Bundler.require(:default, Sinatra::Base.environment)
+
+path = File.expand_path('../../app/{controllers,models,helpers}', __FILE__)
 dirs = Dir.glob(path)
+dirs << File.expand_path('../../lib', __FILE__)
+
 $LOAD_PATH.concat(dirs)
 
 Dir.glob('./lib/**/*.rb').each { |file|  require file }
