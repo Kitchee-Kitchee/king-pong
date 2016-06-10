@@ -1,3 +1,6 @@
+require 'king_pong/user'
+require 'king_pong/tournament'
+
 module KingPong
   class GameService
     def initialize(params)
@@ -7,7 +10,8 @@ module KingPong
     def create!
       winner = ::KingPong::User.find params.delete('winner_id')
       loser = ::KingPong::User.find params.delete('loser_id')
-      ::KingPong::Game.create! params.merge(winner: winner, loser: loser)
+      tournament = ::KingPong::Tournament.find params.delete('tournament_id')
+      tournament.games.create! params.merge(winner: winner, loser: loser)
     end
   end
 end

@@ -1,4 +1,6 @@
 require 'king_pong/api_controller'
+require 'king_pong/game'
+require 'king_pong/tournament'
 require 'king_pong/game_service'
 
 module KingPong
@@ -10,7 +12,10 @@ module KingPong
     # @!method get_games
     # @return [Array<Game>]
     get '/' do
-      json Game.all
+      tournament = Tournament.find params[:tournament_id]
+      json tournament.games.
+        paginate(page: params[:page] || 1, per_page: params[:per_page] || 25).
+        order(created_at: :asc)
     end
 
     # @!method create_game
