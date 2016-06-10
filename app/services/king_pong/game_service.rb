@@ -3,6 +3,8 @@ require 'king_pong/tournament'
 
 module KingPong
   class GameService
+    attr_reader :params
+
     def initialize(params)
       @params = params.dup
     end
