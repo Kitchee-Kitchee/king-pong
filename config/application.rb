@@ -21,7 +21,7 @@ module KingPong
     ActiveRecord::Base.establish_connection(db_options)
 
     use Rack::Parser, parsers: {
-      %r{json} => OjEncoder.new
+      'application/json' => OjEncoder.new
     }
 
     map('/users'){ run UsersController }
