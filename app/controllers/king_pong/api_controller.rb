@@ -11,23 +11,26 @@ module KingPong
     error ActiveRecord::RecordInvalid do
       error = env['sinatra.error']
       record = error.record
-      [400, {}, record.errors.to_json]
+      [400, {}, {errors: record.errors, request: request_payload}.to_json]
     end
 
     error ActiveRecord::RecordNotFound do
-      error = env['sinatra.error']
       [404, {}, error_on_404]
     end
 
     def error_on_404
       {
         error: 'The resource you are looking for does not exist.',
-        request: {
-          method: request.request_method,
-          path: request.path,
-          params: request.params
-        }
+        request: request_payload
       }.to_json
+    end
+
+    def request_payload
+      {
+        method: request.request_method,
+        path: request.path,
+        params: request.params
+      }
     end
   end
 end
