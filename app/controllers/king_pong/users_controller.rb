@@ -17,24 +17,27 @@ module KingPong
     # Create a user
     # @return [User]
     post '/' do
-      json User.create! params
+      json User.create!(params)
     end
 
     # @method get_user
     # Gets a specific user by id
     # @return [User]
     get '/:id' do |id|
-      json User.find id
+      json User.find(id)
     end
 
     # @method delete_user
     # Delete a specific user by id
-    # @return [true|false]
+    # @return [Hash]
     delete '/:id' do |id|
       status = User.find(id).destroy
       json deleted: status
     end
 
+    # @method update_user
+    # Update a specific user by id
+    # @return [User]
     patch '/:id' do |id|
       user = User.find id
       user.update_attributes(params)
