@@ -1,5 +1,17 @@
+require 'king_pong/elo_rater'
+
 module KingPong
   class Tournament < Resource
-    has_many :games, dependent: :destroy
+    enum rater_algorithm: { elo: 0 }
+
+    DEFAULT_RATERS = { elo: EloRater.new }.freeze
+
+    has_many :games, inverse_of: :tournament, dependent: :destroy
+    has_many :ratings, inverse_of: :tournament, dependent: :destroy
+
+    # @todo Ability to chose another rater than ELO
+    def rater
+      DEFAULT_RATERS[rater_algorithm.to_sym]
+    end
   end
 end

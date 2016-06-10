@@ -15,5 +15,11 @@ module KingPong
     validates :winner_score, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
     validates :tournament_id, presence: true
 
+    after_create :update_ratings
+
+    # Update the rating for players participating in this game
+    def update_ratings
+      tournament.rater.update_ratings(self)
+    end
   end
 end

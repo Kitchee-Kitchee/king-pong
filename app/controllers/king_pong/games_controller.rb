@@ -1,4 +1,5 @@
 require 'king_pong/api_controller'
+require 'king_pong/game_service'
 
 module KingPong
   class GamesController < ApiController
@@ -17,7 +18,7 @@ module KingPong
     # Create a Game
     # @return [Game]
     post '/' do
-      json Game.create!(params)
+      json GameService.new(params).create!
     end
 
     # @method get_game

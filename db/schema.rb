@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610014834) do
+ActiveRecord::Schema.define(version: 20160610054710) do
 
   create_table "king_pong_games", force: :cascade do |t|
     t.binary   "details"
@@ -29,11 +29,28 @@ ActiveRecord::Schema.define(version: 20160610014834) do
   add_index "king_pong_games", ["loser_type", "loser_id"], name: "index_king_pong_games_on_loser_type_and_loser_id"
   add_index "king_pong_games", ["winner_type", "winner_id"], name: "index_king_pong_games_on_winner_type_and_winner_id"
 
+  create_table "king_pong_history_events", force: :cascade do |t|
+    t.integer  "value"
+    t.integer  "rating_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "king_pong_ratings", force: :cascade do |t|
+    t.integer  "value",                         null: false
+    t.boolean  "pro",           default: false
+    t.integer  "tournament_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
   create_table "king_pong_tournaments", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",                        null: false
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "rater_algorithm", default: 0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "king_pong_users", force: :cascade do |t|

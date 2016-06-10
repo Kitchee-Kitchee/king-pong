@@ -4,7 +4,7 @@ require 'sinatra'
 
 Bundler.require(:default, Sinatra::Base.environment)
 
-path = File.expand_path('../../app/{controllers,models,helpers}', __FILE__)
+path = File.expand_path('../../app/{controllers,models,helpers,services}', __FILE__)
 dirs = Dir.glob(path)
 dirs << File.expand_path('../../lib', __FILE__)
 
@@ -25,6 +25,7 @@ module KingPong
     }
 
     map('/users'){ run UsersController }
+    map('/tournaments'){ run TournamentsController }
     map('/games'){ run GamesController }
     map('/rankings'){ run RankingsController }
 
