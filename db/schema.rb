@@ -11,16 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609181013) do
+ActiveRecord::Schema.define(version: 20160609215720) do
 
-  create_table "users", force: :cascade do |t|
-    t.string   "user_name",  null: false
-    t.string   "email",      null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "king_pong_games", force: :cascade do |t|
+    t.binary   "details"
+    t.integer  "winner_id"
+    t.string   "winner_type"
+    t.integer  "loser_id"
+    t.string   "loser_type"
+    t.integer  "winner_score"
+    t.integer  "loser_score"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["user_name"], name: "index_users_on_user_name", unique: true
+  add_index "king_pong_games", ["loser_type", "loser_id"], name: "index_king_pong_games_on_loser_type_and_loser_id"
+  add_index "king_pong_games", ["winner_type", "winner_id"], name: "index_king_pong_games_on_winner_type_and_winner_id"
+
+  create_table "king_pong_users", force: :cascade do |t|
+    t.string   "user_name",  null: false
+    t.string   "email",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "king_pong_users", ["email"], name: "index_king_pong_users_on_email", unique: true
+  add_index "king_pong_users", ["user_name"], name: "index_king_pong_users_on_user_name", unique: true
 
 end
