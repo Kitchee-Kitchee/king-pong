@@ -1,3 +1,4 @@
+require 'will_paginate/active_record'
 module KingPong
   class Resource < ::ActiveRecord::Base
     self.abstract_class = true

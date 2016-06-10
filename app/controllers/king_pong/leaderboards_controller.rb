@@ -1,4 +1,5 @@
 require 'king_pong/api_controller'
+require 'king_pong/tournament'
 require 'king_pong/leaderboard'
 
 module KingPong

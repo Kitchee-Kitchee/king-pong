@@ -1,3 +1,4 @@
+require 'king_pong/resource'
 require 'king_pong/elo_rater'
 
 module KingPong

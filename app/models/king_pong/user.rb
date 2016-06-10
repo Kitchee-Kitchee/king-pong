@@ -17,5 +17,9 @@ module KingPong
     def games
       Game.where("winner_id = ? OR loser_id = ?", id, id)
     end
+
+    def recent_ratings(tournament_id, page, per_page)
+      ratings.where(tournament_id: tournament_id).paginate(page: page, per_page: per_page).order(created_at: :asc)
+    end
   end
 end

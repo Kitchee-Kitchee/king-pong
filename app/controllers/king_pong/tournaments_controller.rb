@@ -1,4 +1,7 @@
 require 'king_pong/api_controller'
+require 'king_pong/tournament'
+require 'king_pong/user'
+require 'king_pong/stat'
 
 module KingPong
   class TournamentsController < ApiController
@@ -21,8 +24,8 @@ module KingPong
     end
 
     # @method get_tournament
-    # Gets a specific Tournament by id
     # @return [Tournament]
+    # Gets a specific Tournament by id
     get '/:id' do |id|
       json Tournament.find(id)
     end
@@ -42,6 +45,12 @@ module KingPong
       tournament = Tournament.find id
       tournament.update_attributes(params)
       json tournament
+    end
+
+    get '/:id/stats/:user_id' do |id, user_id|
+      tournament = Tournament.find id
+      user = User.find user_id
+      json Stat.new(tournament, user, params)
     end
   end
 end
