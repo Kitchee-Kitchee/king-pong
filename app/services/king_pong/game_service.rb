@@ -8,8 +8,8 @@ module KingPong
     end
 
     def create!
-      winner = ::KingPong::User.find params.delete('winner_id')
-      loser = ::KingPong::User.find params.delete('loser_id')
+      winner = ::KingPong::User.find_by! user_name: params.delete('winner')
+      loser = ::KingPong::User.find_by! user_name: params.delete('loser')
       tournament = ::KingPong::Tournament.find params.delete('tournament_id')
       tournament.games.create! params.merge(winner: winner, loser: loser)
     end

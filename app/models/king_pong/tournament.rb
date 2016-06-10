@@ -10,6 +10,8 @@ module KingPong
     has_many :games, inverse_of: :tournament, dependent: :destroy
     has_many :ratings, { inverse_of: :tournament, dependent: :destroy }, -> { order(:value).desc }
 
+    validates :name, presence: true
+
     # @todo Ability to chose another rater than ELO
     def rater
       DEFAULT_RATERS[rater_algorithm.to_sym]

@@ -88,8 +88,8 @@ All the call to the endpoints must have **Content-Type: application/json**
 
     * Required fields:
 
-        * **winner_id** ID of the winner
-        * **loser_id** ID of the loser
+        * **winner** username of the winner
+        * **loser** username of the loser
         * **tournament_id** ID of the tournament
         * **winner_score** score of the winner
         * **loser_score** score of the loser

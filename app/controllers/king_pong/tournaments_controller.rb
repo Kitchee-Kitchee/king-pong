@@ -34,8 +34,7 @@ module KingPong
     # Delete a specific Tournament by id
     # @return [Hash]
     delete '/:id' do |id|
-      status = Tournament.find(id).destroy
-      json deleted: status
+      json Tournament.find(id).destroy!
     end
 
     # @@!method update_tournament

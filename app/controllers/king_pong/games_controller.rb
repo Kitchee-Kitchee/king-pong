@@ -38,7 +38,7 @@ module KingPong
     # @return [Hash]
     delete '/:id' do |id|
       status = Game.find(id).destroy
-      json deleted: status
+      json status
     end
 
     # @method update_game
