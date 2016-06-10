@@ -47,9 +47,9 @@ module KingPong
       json tournament
     end
 
-    get '/:id/stats/:user_id' do |id, user_id|
+    get '/:id/stats/:user_name' do |id, user_name|
       tournament = Tournament.find id
-      user = User.find user_id
+      user = User.find_by! user_name: user_name
       json Stat.new(tournament, user, params)
     end
   end

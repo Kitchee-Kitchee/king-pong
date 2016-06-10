@@ -55,7 +55,7 @@ All the call to the endpoints must have **Content-Type: application/json**
 
 * **GET /tournaments/:id/games** - Show paginated tournament games
 
-* **GET /tournaments/:id/stats/:user_id** - Show paginated tournament stats for a user
+* **GET /tournaments/:id/stats/:user_name** - Show paginated tournament stats for a user
 
     * Parameters:
 
@@ -113,6 +113,6 @@ All the call to the endpoints must have **Content-Type: application/json**
          * **loser_score** score of the loser
 
 
-# Leaderboard
+## Leaderboard
 
 * **GET /leaderboards/:id** - Show the leaderboard of a tournament
