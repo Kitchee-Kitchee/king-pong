@@ -27,7 +27,7 @@ module KingPong
     map('/users'){ run UsersController }
     map('/tournaments'){ run TournamentsController }
     map('/games'){ run GamesController }
-    map('/rankings'){ run RankingsController }
+    map('/leaderboards'){ run LeaderboardsController }
 
   end
 end
