@@ -25,11 +25,11 @@ All the call to the endpoints must have **Content-Type: application/json**
         * **email** unique in db
 
 
-* **GET /users/:id** - Show user information
+* **GET /users/:user_name** - Show user information
 
-* **DELETE /users/:id** - Delete a user
+* **DELETE /users/:user_name** - Delete a user
 
-* **PATCH /users/:id** - Update a user
+* **PATCH /users/:user_name** - Update a user
 
     * Optional fields:
 

@@ -20,26 +20,26 @@ module KingPong
       json User.create!(params)
     end
 
-    # @method get_user
-    # Gets a specific user by id
+    # @!method get_user
+    # Gets a specific user by user_name
     # @return [User]
-    get '/:id' do |id|
-      json User.find(id)
+    get '/:user_name' do |user_name|
+      json User.find_by!(user_name: user_name)
     end
 
-    # @method delete_user
-    # Delete a specific user by id
+    # @!method delete_user
+    # Delete a specific user by user_name
     # @return [Hash]
-    delete '/:id' do |id|
-      status = User.find(id).destroy
+    delete '/:user_name' do |user_name|
+      status = User.find_by!(user_name: user_name).destroy
       json deleted: status
     end
 
-    # @method update_user
-    # Update a specific user by id
+    # @!method update_user
+    # Update a specific user by user_name
     # @return [User]
-    patch '/:id' do |id|
-      user = User.find id
+    patch '/:user_name' do |user_name|
+      user = User.find_by!(user_name: user_name)
       user.update_attributes(params)
       json user
     end

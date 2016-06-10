@@ -23,14 +23,14 @@ module KingPong
       json Tournament.create!(params)
     end
 
-    # @method get_tournament
+    # @@!method get_tournament
     # @return [Tournament]
     # Gets a specific Tournament by id
     get '/:id' do |id|
       json Tournament.find(id)
     end
 
-    # @method delete_tournament
+    # @@!method delete_tournament
     # Delete a specific Tournament by id
     # @return [Hash]
     delete '/:id' do |id|
@@ -38,7 +38,7 @@ module KingPong
       json deleted: status
     end
 
-    # @method update_tournament
+    # @@!method update_tournament
     # Update a specific tournament by id
     # @return [Tournament]
     patch '/:id' do |id|
