@@ -7,11 +7,8 @@ module KingPong
     set :public_folder, proc { File.join(root, 'public') }
 
     configure :development do
-      # Actually handles error like in production
+      # Handles error like in production
       set :show_exceptions, :after_handler
-      # reload the files
-      # new files requires the server to be restarted
-      register Sinatra::Reloader
     end
   end
 end
