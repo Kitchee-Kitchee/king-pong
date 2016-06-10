@@ -8,7 +8,7 @@ module KingPong
     DEFAULT_RATERS = { elo: EloRater.new }.freeze
 
     has_many :games, inverse_of: :tournament, dependent: :destroy
-    has_many :ratings, { inverse_of: :tournament, dependent: :destroy }, -> { order(:value).desc }
+    has_many :ratings, { inverse_of: :tournament, dependent: :destroy }, -> { order(value: :desc) }
 
     validates :name, presence: true
 

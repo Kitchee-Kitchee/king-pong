@@ -5,7 +5,7 @@ module KingPong
     end
 
     def leaderboard
-      @tournament.ratings.each_with_index.map do |rating, index|
+      @tournament.ratings.order(value: :desc).each_with_index.map do |rating, index|
         {
           rank: index + 1,
           rating: rating.value,
